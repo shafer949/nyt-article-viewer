@@ -10,10 +10,17 @@ class SearchForm extends Component {
             <section>
                 <form className='search-form'>
                     <div className='datepicker-container'>
+
                         <label className='datepicker-startDate-label'>
                             Start Date 
                             <DatePicker/>
                         </label>
+
+                        <label className='datepicker-endDate-label'>
+                            End Date 
+                            <DatePicker/>
+                        </label>
+                        
                     </div>    
                 </form>    
             </section>

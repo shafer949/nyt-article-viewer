@@ -55,6 +55,18 @@ describe('Given `SearchForm`' ,() => {
 
         })
 
+        it('should contain `DatePicker` with a `label` of End Date', () => {
+
+            const component = renderComponent()
+
+            const elementText = component.find('.datepicker-endDate-label').text()
+
+            expect(elementText).to.equal('End Date<DatePicker />')
+
+            expect(component.find('DatePicker').first().exists()).to.be.true()
+
+        })
+
     })
     
     
