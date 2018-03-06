@@ -33,4 +33,29 @@ describe('Given `SearchForm`' ,() => {
         expect(component.find('.search-form').type()).to.equal('form')
 
     })
+
+    describe('form', () => {
+
+        it('should contain an `div` tag', () => {
+
+            const component = renderComponent()
+
+            expect(component.find('.datepicker-container').type()).to.equal('div')
+        })
+
+        it('should contain `DatePicker` with a `label` of Start Date', () => {
+
+            const component = renderComponent()
+
+            const elementText = component.find('.datepicker-startDate-label').text()
+
+            expect(elementText).to.equal('Start Date<DatePicker />')
+
+            expect(component.find('DatePicker').first().exists()).to.be.true()
+
+        })
+
+    })
+    
+    
 })
