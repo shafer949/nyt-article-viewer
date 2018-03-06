@@ -74,5 +74,13 @@ describe('Given `SearchForm`' ,() => {
             expect(component.find('.search-text-input').type()).to.equal('input')
 
         })
+
+        it('should contain submit `button`', () => {
+
+            const component = renderComponent()
+
+            expect(component.find('.submit-form-button').type()).to.equal('button')
+
+        })
     })    
 })

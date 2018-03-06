@@ -24,6 +24,7 @@ class SearchForm extends Component {
 
                     <input className='search-text-input' placeholder='Enter search text'/>
                     
+                    <button className='submit-form-button'>Submit</button>
                 </form>    
             </section>
         )
