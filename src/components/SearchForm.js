@@ -20,8 +20,10 @@ class SearchForm extends Component {
                             End Date 
                             <DatePicker/>
                         </label>
-                        
                     </div>    
+
+                    <input className='search-text-input' placeholder='Enter search text'/>
+                    
                 </form>    
             </section>
         )

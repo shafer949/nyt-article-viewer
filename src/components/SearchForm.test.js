@@ -66,5 +66,13 @@ describe('Given `SearchForm`' ,() => {
             expect(component.find('DatePicker').last().exists()).to.be.true()
 
         })
+
+        it('should contain `input`', () => {
+
+            const component = renderComponent()
+
+            expect(component.find('.search-text-input').type()).to.equal('input')
+
+        })
     })    
 })
