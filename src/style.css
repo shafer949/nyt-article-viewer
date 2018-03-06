@@ -1,0 +1,31 @@
+body {
+    background: rgb(241, 237, 237);
+    margin: 0;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .search-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .datepicker-container {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    width: 30%;
+    padding: 3rem;
+    margin: 1rem;
+  }
+
+  .datepicker-startDate-label, .datepicker-endDate-label {
+    font-size: 1rem;
+    color: black;
+  }
+  
+  .search-text-input {
+      margin-top: 1rem;
+  }
+ 
