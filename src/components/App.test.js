@@ -24,4 +24,12 @@ describe('Given `App`' ,() => {
         expect(component.type()).to.equal('main')
 
     })
+
+    it('it should contain a `SearchForm` component', () => {
+
+        const component = renderComponent()
+        
+        expect(component.find('SearchForm').exists()).to.be.true()
+
+    })
 })
