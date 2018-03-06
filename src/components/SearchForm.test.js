@@ -63,11 +63,8 @@ describe('Given `SearchForm`' ,() => {
 
             expect(elementText).to.equal('End Date<DatePicker />')
 
-            expect(component.find('DatePicker').first().exists()).to.be.true()
+            expect(component.find('DatePicker').last().exists()).to.be.true()
 
         })
-
-    })
-    
-    
+    })    
 })
