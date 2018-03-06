@@ -26,6 +26,11 @@ body {
   }
   
   .search-text-input {
-      margin-top: 1rem;
+    margin-top: 1rem;
+  }
+
+  .submit-form-button {
+     margin-top: 1rem;
+     margin-left: 1rem;
   }
  
