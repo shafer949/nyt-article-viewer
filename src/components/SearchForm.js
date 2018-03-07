@@ -5,42 +5,49 @@ import "react-datepicker/dist/react-datepicker.css";
 import { connect } from 'react-redux'
 import { fetchArticles } from '../actions/articles'
 
+function handleFormSubmit(event) {
+
+    event.preventDefault()
+
+    this.props.fetchArticles()
+}
+
 export class SearchForm extends Component {
     
-    componentDidMount() {
-        this.props.fetchArticles()
-    }
- 
     render() {
         return (
-            <section>
-                <form className='search-form'>
-                    <div className='datepicker-container'>
+            <section id='form-container' className='form-container'>
 
-                        <label className='datepicker-startDate-label'>
+                <h3>Welcome to the New York Times Article Search</h3>
+
+                <form id='search-form' className='search-form' onSubmit={handleFormSubmit.bind(this)}>
+                  
+                  <div id='datepicker-container' className='datepicker-container'>
+
+                        <label id='datepicker-startDate-label' className='datepicker-startDate-label'>
                             Start Date 
                             <DatePicker/>
                         </label>
 
-                        <label className='datepicker-endDate-label'>
+                        <label id='datepicker-endDate-label' className='datepicker-endDate-label'>
                             End Date 
                             <DatePicker/>
                         </label> 
-                    </div>    
+                 </div>  
 
-                    <input className='search-text-input' placeholder='Enter search text'/>
-                    
-                    <button type="submit" className='submit-form-button'>Submit</button>
+                <div id='search-text-input-container' className='search-text-input-container'>
+                        <input className='search-text-input' placeholder='Enter search text'/>
+                </div>
+
+                <div id='submit-form-button-container' className='submit-form-button-container'>
+                        <button className='submit-form-button' type='submit'>Submit</button>
+                </div>
+
                 </form>    
+
             </section>
         )
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        articles: state
-    }
-}
-
-export default connect(mapStateToProps, { fetchArticles })(SearchForm)
+export default connect(null, { fetchArticles })(SearchForm)

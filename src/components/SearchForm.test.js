@@ -6,11 +6,11 @@ import { SearchForm } from './SearchForm'
 import 'isomorphic-fetch'
 
 describe('Given `SearchForm`' ,() => {
-    let sandbox, mockFetchAction
+    let sandbox
 
     function requiredProps(overrides= {}) {
 
-        const testProps = { articles: {}, fetchArticles: mockFetchAction}
+        const testProps = { articles: {} }
 
         return {
             ...testProps,
@@ -28,8 +28,6 @@ describe('Given `SearchForm`' ,() => {
 
         sandbox = sinon.createSandbox()
 
-        mockFetchAction = sandbox.spy()
-
     })
 
     afterEach(() => {
@@ -46,6 +44,16 @@ describe('Given `SearchForm`' ,() => {
 
     })
     
+    it('should exist as a `h3` tag with text', () => {
+
+        const component = renderComponent()
+
+        const elementText = component.find('h3').first().text()
+
+        expect(elementText.length).to.be.greaterThan(0)
+
+    })
+
     it('should contain a `form`', () => {
 
         const component = renderComponent()
@@ -87,12 +95,26 @@ describe('Given `SearchForm`' ,() => {
 
         })
 
+        it('should contain an `div` tag', () => {
+
+            const component = renderComponent()
+
+            expect(component.find('.search-text-input-container').type()).to.equal('div')
+        })
+
         it('should contain `input`', () => {
 
             const component = renderComponent()
 
             expect(component.find('.search-text-input').type()).to.equal('input')
 
+        })
+
+        it('should contain an `div` tag', () => {
+
+            const component = renderComponent()
+
+            expect(component.find('.submit-form-button-container').type()).to.equal('div')
         })
 
         it('should contain submit `button`', () => {
@@ -104,13 +126,24 @@ describe('Given `SearchForm`' ,() => {
         })
     })    
 
-    describe('When mounted', () => {
+    describe('When submit `button` is clicked', () => {
+
+        let component, action
+
+        beforeEach(() => {
+
+            action = sinon.spy()   
+
+            component = renderComponent({fetchArticles:action})
+           
+            component.find('.search-form').simulate('submit', {
+                preventDefault: () => {}
+              })
+        })
 
         it('should call an action', () => {
-
-            const component = renderComponent()
-
-            sinon.assert.calledOnce(mockFetchAction)
+            
+            sinon.assert.calledOnce(action)
         })
     })
 })

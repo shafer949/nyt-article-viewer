@@ -8,7 +8,7 @@ describe('articlesReducer', () =>{
 
     it('should set the articles data', () => {
 
-        const initialState = {}
+        const initialState = []
         
         expect(articlesReducer(initialState, { type: FETCH_ARTICLES, articles: mockArticleData}))
         .to.equal(mockArticleData)

@@ -8,7 +8,7 @@ export const fetchArticles = () => {
     return (dispatch) => {
         return fetch(`${BASE_URL}`)
         .then(resp => resp.json())
-        .then(data => dispatch({ type: FETCH_ARTICLES, articles: data })
-    )
-    }
+        .then(json => json.response.docs)
+        .then(data => dispatch({ type: FETCH_ARTICLES, articles: data }))
+   }
 }

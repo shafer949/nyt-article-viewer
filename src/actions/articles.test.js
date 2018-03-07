@@ -8,16 +8,19 @@ import {FETCH_ARTICLES} from './actionTypes'
 
 const createMockStore = configureMockStore([thunk])
 const store = createMockStore({articles:{}})
-const mockResponse = { docs:'Article Information'}
-const json = sinon.stub().returns(mockResponse)
-const fetchStub = sinon.stub(global,'fetch').resolves({json})
+const mockResponse = {docs:[{}]}
 
+const fetchStub = sinon.stub(global,'fetch')
+    .resolves({
+        json: sinon.stub().resolves({
+            response: mockResponse
+        })})
+    
 it('should create an async action to fetch the articles', () => {
 
-    const expectedActions = [{ type: FETCH_ARTICLES, articles: mockResponse }]
+    const expectedActions = [{ type: FETCH_ARTICLES, articles: [{}] }]
 
     return store.dispatch(fetchArticles()).then(()=> {
-
         expect(store.getActions()).to.equal(expectedActions)
     })
 })

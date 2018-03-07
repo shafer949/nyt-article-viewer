@@ -4,7 +4,7 @@ function fetchArticles (state, action) {
     return action.articles  
 } 
 
-export default function (state={}, action) {
+export default function (state=[], action) {
     const actionHandlers = {
         [FETCH_ARTICLES]: fetchArticles
     }
