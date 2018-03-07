@@ -2,9 +2,15 @@ import React, { Component } from 'react'
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import "react-datepicker/dist/react-datepicker.css";
+import { connect } from 'react-redux'
+import { fetchArticles } from '../actions/articles'
 
-class SearchForm extends Component {
-
+export class SearchForm extends Component {
+    
+    componentDidMount() {
+        this.props.fetchArticles()
+    }
+ 
     render() {
         return (
             <section>
@@ -19,16 +25,22 @@ class SearchForm extends Component {
                         <label className='datepicker-endDate-label'>
                             End Date 
                             <DatePicker/>
-                        </label>
+                        </label> 
                     </div>    
 
                     <input className='search-text-input' placeholder='Enter search text'/>
                     
-                    <button className='submit-form-button'>Submit</button>
+                    <button type="submit" className='submit-form-button'>Submit</button>
                 </form>    
             </section>
         )
     }
 }
 
-export default SearchForm
+function mapStateToProps(state) {
+    return {
+        articles: state
+    }
+}
+
+export default connect(mapStateToProps, { fetchArticles })(SearchForm)

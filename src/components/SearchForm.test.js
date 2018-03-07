@@ -2,12 +2,18 @@ import { expect } from 'code'
 import { shallow } from 'enzyme'
 import sinon from 'sinon'
 import React from 'react'
-import SearchForm from './SearchForm'
+import { SearchForm } from './SearchForm'
+import 'isomorphic-fetch'
 
 describe('Given `SearchForm`' ,() => {
-    
+    let sandbox, mockFetchAction
+
     function requiredProps(overrides= {}) {
+
+        const testProps = { articles: {}, fetchArticles: mockFetchAction}
+
         return {
+            ...testProps,
             ...overrides
         }
     }
@@ -18,6 +24,20 @@ describe('Given `SearchForm`' ,() => {
 
     }
     
+    beforeEach(() => {
+
+        sandbox = sinon.createSandbox()
+
+        mockFetchAction = sandbox.spy()
+
+    })
+
+    afterEach(() => {
+
+        sandbox.restore()
+
+    })
+
     it('should exist as a `section` tag', () => {
 
         const component = renderComponent()
@@ -83,4 +103,14 @@ describe('Given `SearchForm`' ,() => {
 
         })
     })    
+
+    describe('When mounted', () => {
+
+        it('should call an action', () => {
+
+            const component = renderComponent()
+
+            sinon.assert.calledOnce(mockFetchAction)
+        })
+    })
 })

@@ -25,11 +25,10 @@ describe('Given `App`' ,() => {
 
     })
 
-    it('it should contain a `SearchForm` component', () => {
+    it('should contain a connected `SearchForm` component', () => {
 
         const component = renderComponent()
-        
-        expect(component.find('SearchForm').exists()).to.be.true()
 
+        expect(component.find('Connect(SearchForm)').exists()).to.be.true()
     })
 })
