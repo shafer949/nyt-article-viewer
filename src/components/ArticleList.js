@@ -7,7 +7,6 @@ export class ArticleList extends Component {
 
     render() {
         return (
-            <div>
             <ul className='article-list' id='article-list'>
                 {
                     this.props.articles.map((article) => {
@@ -15,7 +14,6 @@ export class ArticleList extends Component {
                     })
                 }
             </ul>
-            </div>
           )
     }
 } 

@@ -9,7 +9,7 @@ const ArticleListItem = ({ article = {} }) => {
         <li id='article-list-item' className='article-list-item' >
 
             <a className='article-link' href={web_url} target='blank'>
-                <img src={`https://www.nytimes.com/${multimedia[0].url}`} id='article-image' className='article-image' /> 
+                <img src={`https://www.nytimes.com/${multimedia[0].url}`} alt='Article' id='article-image' className='article-image' /> 
             </a>          
 
             <p className='article-snippet'>{snippet}</p>
