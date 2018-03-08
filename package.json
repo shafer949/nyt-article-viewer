@@ -5,6 +5,7 @@
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.21.0",
+    "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-datepicker": "^1.2.2",
     "react-dom": "^16.2.0",
