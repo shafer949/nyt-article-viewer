@@ -31,4 +31,11 @@ describe('Given `App`' ,() => {
 
         expect(component.find('Connect(SearchForm)').exists()).to.be.true()
     })
+
+    it('should contain a connected `ArticleList` component', () => {
+
+        const component = renderComponent()
+
+        expect(component.find('Connect(ArticleList)').exists()).to.be.true()
+    })
 })

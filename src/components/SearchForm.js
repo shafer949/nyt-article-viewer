@@ -52,20 +52,20 @@ export class SearchForm extends Component {
                 <form id='search-form' className='search-form' onSubmit={handleFormSubmit.bind(this)}>
                   
                   <div id='datepicker-container' className='datepicker-container'>
-
+                 
                         <label id='datepicker-startDate-label' className='datepicker-startDate-label'>
                             Start Date 
-                            <DatePicker
+                            <DatePicker  
                                 className='start-date-datepicker'
                                 selected={this.state.startDate}
                                 startDate={this.state.startDate}
                                 endDate={this.state.endDate}
-                                onChange={handleChangeStart.bind(this)}
+                                onChange={handleChangeStart.bind(this)} 
                             />
-                        </label>
+                        </label> 
 
                         <label id='datepicker-endDate-label' className='datepicker-endDate-label'>
-                            End Date 
+                            End Date                             
                             <DatePicker
                                 className='end-date-datepicker'
                                 selected={this.state.endDate}
@@ -74,7 +74,7 @@ export class SearchForm extends Component {
                                 onChange={handleChangeEnd.bind(this)}
                             />
                         </label> 
-                 </div>  
+                 </div>
 
                 <div id='search-text-input-container' className='search-text-input-container'>
                         <input className='search-text-input' placeholder='Enter search text' onChange={handleInputChange.bind(this)}/>

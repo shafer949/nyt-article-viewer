@@ -20,7 +20,7 @@ beforeEach(() => {
     sandbox = sinon.createSandbox()
 
     mockResponse = { 
-        docs: [ { _id: '1', snippet: "Test Article 1" } ]
+        docs: [ { _id: '1', snippet: "Test Article 1" } ] 
     }
 
     mockError = {

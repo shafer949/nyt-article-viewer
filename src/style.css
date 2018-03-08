@@ -3,11 +3,16 @@ body {
     justify-content: center;
     background: rgb(241, 237, 237);
     margin: 0;
-    font-size: 20px;
+    font-size: 14px;
     font-family: 'Roboto', sans-serif;
   }
 
-#form-container {
+  h3 {
+      text-align: center;
+      padding-top: 1.5em;
+  }
+
+#main-container {
     background: rgb(192, 192, 197);
     display: flex;
     flex-direction: column;
@@ -20,24 +25,59 @@ body {
 
 #search-form {
     display: flex;
-    justify-content: center;
-    padding: 2rem 0;
-    margin: 1em 0.5em;
-    width: 80%;
+    align-items: center;
+    padding-top: 1em;
+    width: 80%; 
+    
+}
+
+#datepicker-container {
+    display: flex;
+    align-items: center;
 }
 
 #datepicker-startDate-label, #datepicker-endDate-label {
     font-size: .8em;
     color: black;
+    padding-left: .5em;
+    padding-right: .5em;
 }
   
-#search-text-input-container, #submit-form-button-container {
+#search-text-input-container, #submit-form-button-container  {
     display: flex;
-    justify-content: center;
-    padding: 1.17rem 0;
+    align-items: center;
+    padding-top: .95em;
+    padding-left: .5em;
+    padding-right: .5em;
 } 
 
-#datepicker-container {
+#article-list {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+ul {
+    list-style: none
+}
+
+#article-list-item {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 2em 0;
+    margin: 1em 0.5em;
+    width: 80%;
+    border: 1px solid rgba(0,0,0,0.15);
+}
+
+p { 
+    white-space: normal;
+    width: 60%;
+}
+
+#article-image {
+    height: 276px;
+    width: 427px;
 }
