@@ -1,0 +1,43 @@
+body {
+    display: flex;
+    justify-content: center;
+    background: rgb(241, 237, 237);
+    margin: 0;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+  }
+
+#form-container {
+    background: rgb(192, 192, 197);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 66.666vw;
+    align-items: center;
+    border-right: 1px solid rgba(0,0,0,0.15);
+    border-left: 1px solid rgba(0,0,0,0.15);
+}
+
+#search-form {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+    margin: 1em 0.5em;
+    width: 80%;
+}
+
+#datepicker-startDate-label, #datepicker-endDate-label {
+    font-size: .8em;
+    color: black;
+}
+  
+#search-text-input-container, #submit-form-button-container {
+    display: flex;
+    justify-content: center;
+    padding: 1.17rem 0;
+} 
+
+#datepicker-container {
+    display: flex;
+    justify-content: center;
+}
