@@ -1,2 +1,1 @@
 export const FETCH_ARTICLES = 'FETCH_ARTICLES'
-export const SORT_ARTICLES = 'SORT_ARTICLES'

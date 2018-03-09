@@ -10,23 +10,22 @@ function handleFormSubmit(event) {
 
     event.preventDefault()
 
-    const startDate = this.state.startDate && this.state.startDate.format('YYYYMMDD')
-    const endDate = this.state.endDate && this.state.endDate.format('YYYYMMDD')
-    const searchText = this.state.searchText && this.state.searchText
+    const startDate = this.state.startDate.format('YYYYMMDD')
+    const endDate = this.state.endDate.format('YYYYMMDD')
+    const searchText = this.state.searchText
 
-    startDate && endDate && searchText &&
     this.props.fetchArticles(startDate, endDate, searchText)
 }
 
 function handleChangeStart(date) {
     this.setState({
-        startDate: date && moment(date) 
+        startDate: date != null ? moment(date) : null
       });
 }
 
 function handleChangeEnd(date) {
     this.setState({
-        endDate: date && moment(date)
+        endDate: date != null ? moment(date) : null
       });
 }
 
@@ -48,6 +47,8 @@ export class SearchForm extends Component {
         return (
             <section id='form-container' className='form-container'>
 
+                <h3>Welcome to the New York Times Article Search</h3>
+
                 <form id='search-form' className='search-form' onSubmit={handleFormSubmit.bind(this)}>
                   
                   <div id='datepicker-container' className='datepicker-container'>
@@ -56,19 +57,17 @@ export class SearchForm extends Component {
                             Start Date 
                             <DatePicker  
                                 className='start-date-datepicker'
-                                placeholderText="Select a start date"
                                 selected={this.state.startDate}
                                 startDate={this.state.startDate}
                                 endDate={this.state.endDate}
                                 onChange={handleChangeStart.bind(this)} 
                             />
                         </label> 
-                      
+
                         <label id='datepicker-endDate-label' className='datepicker-endDate-label'>
                             End Date                             
                             <DatePicker
                                 className='end-date-datepicker'
-                                placeholderText="Select a end date"
                                 selected={this.state.endDate}
                                 startDate={this.state.startDate}
                                 endDate={this.state.endDate}
@@ -78,10 +77,7 @@ export class SearchForm extends Component {
                  </div>
 
                 <div id='search-text-input-container' className='search-text-input-container'>
-                        <label id='search-text-label'>
-                            Search Text 
-                           <input className='search-text-input' placeholder='Enter search text' onChange={handleInputChange.bind(this)}/>
-                        </label>
+                        <input className='search-text-input' placeholder='Enter search text' onChange={handleInputChange.bind(this)}/>
                 </div>
 
                 <div id='submit-form-button-container' className='submit-form-button-container'>
@@ -104,10 +100,5 @@ SearchForm.propTypes = {
     searchText: PropTypes.string
 }
 
-function mapStateToProps(state) {
-    return {
-      articles: state
-    }
-}
 
-export default connect(mapStateToProps, { fetchArticles })(SearchForm)
+export default connect(null, { fetchArticles })(SearchForm)

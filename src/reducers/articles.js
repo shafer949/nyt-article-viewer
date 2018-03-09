@@ -1,17 +1,12 @@
-import {FETCH_ARTICLES, SORT_ARTICLES} from '../actions/actionTypes'
+import {FETCH_ARTICLES} from '../actions/actionTypes'
 
 function fetchArticles (state, action) {
     return action.articles  
 } 
 
-function sortArticles (state, action) {
-    return action.articles
-}
-
 export default function (state=[], action) {
     const actionHandlers = {
-        [FETCH_ARTICLES]: fetchArticles,
-        [SORT_ARTICLES]: sortArticles
+        [FETCH_ARTICLES]: fetchArticles
     }
 
     const reducer = actionHandlers[action.type]
