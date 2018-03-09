@@ -3,11 +3,15 @@ body {
     justify-content: center;
     background: rgb(241, 237, 237);
     margin: 0;
-    font-size: 20px;
+    font-size: 14px;
     font-family: 'Roboto', sans-serif;
   }
 
-#form-container {
+  h1 {
+      text-align: center;
+  }
+
+#main-container {
     background: rgb(192, 192, 197);
     display: flex;
     flex-direction: column;
@@ -18,26 +22,119 @@ body {
     border-left: 1px solid rgba(0,0,0,0.15);
 }
 
-#search-form {
-    display: flex;
-    justify-content: center;
-    padding: 2rem 0;
-    margin: 1em 0.5em;
-    width: 80%;
+#form-container {
+    /* padding: 1em; */
+    /* display:block;
+    margin:0em; */
+    /* display: flex;
+    align-items: center;
+    width: 20%; */
+    margin-left: 2.5em;
 }
 
-#datepicker-startDate-label, #datepicker-endDate-label {
+#search-form {
+    display: flex;
+    align-items: center;
+    padding-top: .1em;
+    width: 20%; 
+    
+}
+
+#datepicker-container {
+    display: flex;
+    align-items: space-around;
+}
+
+#datepicker-startDate-label, #datepicker-endDate-label, #search-text-label {
     font-size: .8em;
     color: black;
 }
   
 #search-text-input-container, #submit-form-button-container {
     display: flex;
-    justify-content: center;
-    padding: 1.17rem 0;
+    align-items: center;
+    padding-left: .3em;
+    padding-right: .1em;
 } 
 
-#datepicker-container {
+#submit-form-button-container  {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    padding-top: 1em;
+    padding-left: .5em;
+    padding-right: .5em;
+} 
+
+#article-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ul {
+    list-style: none
+}
+
+#article-list-item {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 1em;
+    margin: 1em 0.5em;
+    width: 80%;
+    border: 1px solid rgba(0,0,0,0.15);
+}
+
+#article-author {
+    margin-bottom: 1em;
+    text-align: center;
+    white-space: normal;
+    width: 80%;
+}
+
+#article-snippet {
+    margin-bottom: 1em;
+    padding-left: 3.2em;
+    white-space: normal;
+    width: 80%;
+}
+
+#article-image {
+    width: 80%;
+    margin: 4em;
+    display:block;
+    margin:auto;
+}
+
+#sort-articles-select {
+    display:block;
+}
+
+#sort-articles-select-label {
+    margin-top: 2em;
+    margin-left: 40em;
+    font-size: .8em;
+    color: black;
+    display:block;
+}
+
+#no-article-image {
+    padding-top: 1em;
+    width: 40%;
+    display:block;
+    margin:auto;
+}
+
+#header-text {
+    text-align: center;
+    font-size: .7em;
+}
+
+.react-datepicker-wrapper {
+    padding: .3em;
+}
+
+#no-results-image {
+    padding: 2em;
 }
