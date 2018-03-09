@@ -1,74 +1,71 @@
-import { expect } from 'code'
-import { shallow } from 'enzyme'
+import configureMockStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
 import sinon from 'sinon'
-import React from 'react'
-import {ArticleList}  from './ArticleList'
+import {expect} from 'code'
+import 'isomorphic-fetch'
+import {fetchArticles} from './articles'
+import {FETCH_ARTICLES} from './actionTypes'
 import moment from 'moment';
 
-describe('Given ArticleList', () => {
+const createMockStore = configureMockStore([thunk])
+const store = createMockStore({articles:[]})
 
-    const requiredProps = (overrideProps  = {}) => {
-        
-        const testProps = { 
-        articles: [ 
-            {
-                _id: '1', 
-                web_url: 'https://www.nytimes.com/2018/03/05/opinion/mom-gun-safety-intruder.html',
-                multimedia: [ { url: 'https://www.nytimes.com/images/2018/03/05/opinion/05Chatterji/05Chatterji-articleLarge.jpg' } ],
-                snippet: "Test Snippet 1", 
-                byline: { original: 'Test Person 1'},
-                word_Count: 123,
-                pub_date: moment().day(-17)
-            },
-            {
-                _id: '2', 
-                web_url: 'https://www.nytimes.com/2018/03/05/opinion/mom-gun-safety-intruder.html',
-                multimedia: [ { url: 'https://www.nytimes.com/images/2018/03/05/opinion/05Chatterji/05Chatterji-articleLarge.jpg' } ],
-                snippet: "Test Snippet 1", 
-                byline: { original: 'Test Person 1'},
-                word_Count: 800,
-                pub_date: moment()
-            },
-            {
-                _id: '3', 
-                web_url: 'https://www.nytimes.com/2018/03/05/opinion/mom-gun-safety-intruder.html',
-                multimedia: [ { url: 'https://www.nytimes.com/images/2018/03/05/opinion/05Chatterji/05Chatterji-articleLarge.jpg' } ],
-                snippet: "Test Snippet 1", 
-                byline: { original: 'Test Person 1'},
-                word_Count: 50,
-                pub_date: moment().month(-5)
-            }
-        ] 
+let mockResponse,
+    sandbox,
+    fetchStub,
+    mockError
+
+beforeEach(() => {
+
+    sandbox = sinon.createSandbox()
+
+    mockResponse = { 
+        docs: [ { _id: '1', snippet: "Test Article 1" } ] 
     }
 
-        return {
-            ...testProps,
-            ...overrideProps
-        }
-    }
-    
-    const renderComponent = (props = requiredProps()) => {
-    
-        return shallow(<ArticleList {...props} />)
-        
+    mockError = {
+        errors: ['Invalid parameters supplied.'] 
     }
 
-    it('should exist as a `ul` tag', () => {
-
-        const component = renderComponent();
-
-        expect(component.find('.article-list').length).to.equal(1);
-    })
-
-    describe('when given articles data', () => {
-
-        it('should render a `ArticleListItem` for each data item', () => {
-    
-           const component = renderComponent();
-
-          expect(component.find('ArticleListItem').length).to.equal(3)
-    
+    fetchStub = sandbox.stub(global,'fetch')
+    .resolves({
+        json: sandbox.stub().resolves({
+            response: mockResponse
         })
-    
     })
+})
+
+afterEach(() => {
+
+    sandbox.restore()
+
+    store.clearActions();
+})
+
+it('should create an async action to fetch the articles with default parameters supplied', () => {
+    
+    const expectedActions = [{ type: FETCH_ARTICLES, articles: mockResponse.docs }]
+
+    return store.dispatch(fetchArticles())
+        .then(()=> {
+        
+            expect(store.getActions()).to.equal(expectedActions)
+        })
+})        
+
+it('should fetch the articles based on valid parameters supplied', () => {
+
+    const mockStartDate = moment().format('YYYYMMDD')
+
+    const mockEndDate = moment().day(7).format('YYYYMMDD')
+
+    const mockSearchText = 'dog'
+
+    const expectedActions = [{ type: FETCH_ARTICLES, articles: mockResponse.docs }]
+
+    return store.dispatch(fetchArticles(mockStartDate, mockEndDate, mockSearchText))
+        .then(()=> {
+            
+            expect(store.getActions()).to.equal(expectedActions)
+        })
 })
