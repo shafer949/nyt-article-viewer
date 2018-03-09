@@ -9,17 +9,16 @@ import moment from 'moment';
 describe('Given `SearchForm`' ,() => {
     let sandbox
 
-    function requiredProps(overrides= {}) {
-
+    const requiredProps = (overrideProps  = {}) => {
         return {
-            ...overrides
+            ...overrideProps
         }
     }
-
-    function renderComponent(props=requiredProps()) {
-
-        return shallow(<SearchForm {...props}/>)
-
+    
+    const renderComponent = (props = requiredProps()) => {
+    
+        return shallow(<SearchForm {...props} />)
+        
     }
     
     beforeEach(() => {
@@ -41,16 +40,6 @@ describe('Given `SearchForm`' ,() => {
         expect(component.type()).to.equal('section')
 
     })
-    
-    it('should exist as a `h3` tag with text', () => {
-
-        const component = renderComponent()
-
-        const elementText = component.find('h3').first().text()
-
-        expect(elementText.length).to.be.greaterThan(0)
-
-    })
 
     it('should contain a `form`', () => {
 
@@ -69,26 +58,11 @@ describe('Given `SearchForm`' ,() => {
             expect(component.find('.datepicker-container').type()).to.equal('div')
         })
 
-        it('should contain `DatePicker` with a `label` of Start Date', () => {
+        it('should contain a start date and end date `DatePicker`', () => {
 
             const component = renderComponent()
 
-            const elementText = component.find('.datepicker-startDate-label').text()
-
-            expect(elementText).to.equal('Start Date<DatePicker />')
-
-            expect(component.find('DatePicker').first().exists()).to.be.true()
-        })
-
-        it('should contain `DatePicker` with a `label` of End Date', () => {
-
-            const component = renderComponent()
-
-            const elementText = component.find('.datepicker-endDate-label').text()
-
-            expect(elementText).to.equal('End Date<DatePicker />')
-
-            expect(component.find('DatePicker').last().exists()).to.be.true()
+            expect(component.find('DatePicker').length).to.equal(2)
         })
 
         it('should contain an `div` tag with an `input`', () => {
@@ -110,7 +84,7 @@ describe('Given `SearchForm`' ,() => {
         })
     })    
 
-    describe('When the startDate `datepicker` has a value', () => {
+    describe('When the startDate and endDate `datepicker` each have a value other than null', () => {
 
         let component
 
@@ -119,36 +93,30 @@ describe('Given `SearchForm`' ,() => {
             component = renderComponent()
 
             component.setState({ 
-                startDate: moment()
-            });
-                
-            component.find('.start-date-datepicker').simulate('change', { target: { value: component.state().startDate } })
-        })
-
-        it('should have a local startDate', () => {
-
-            expect(component.state().startDate).to.equal(component.state().startDate)
-        })
-    })
-
-    describe('When the endDate `datepicker` has a value', () => {
-
-        let component, mockEndDate
-
-        beforeEach(() => {
-
-            component = renderComponent()
-
-            component.setState({ 
+                startDate: moment(),
                 endDate: moment()
             });
+
+            component.find('.start-date-datepicker').simulate('change', { target: { value: component.state().startDate } })
 
             component.find('.end-date-datepicker').simulate('change', { target: { value: component.state().endDate } })
         })
 
-        it('should have a local endDate', () => {
+        afterEach(() => {
+            component.setState({ 
+                startDate: null,
+                endDate: null
+            });
+        })
 
-            expect(component.state().endDate).to.equal( component.state().endDate)
+        it('should set the local startDate to a moment date', () => {
+
+            expect(component.state().startDate).to.equal(component.state().startDate)
+        })
+
+        it('should set the local endDate to a moment date', () => {
+
+            expect(component.state().endDate).to.equal(component.state().endDate)
         })
     })
 
@@ -172,15 +140,14 @@ describe('Given `SearchForm`' ,() => {
     })
 
     describe('When submit `button` is clicked', () => {
-
-        let component, action
+        let fetchAction, component
 
         beforeEach(() => {
 
-            action = sinon.spy()   
+            fetchAction = sandbox.spy() 
 
-            component = renderComponent({fetchArticles:action})
-            
+            component = renderComponent({fetchArticles:fetchAction})
+
             component.setState({ 
                 startDate: moment(),
                 endDate: moment().day(7),
@@ -190,11 +157,12 @@ describe('Given `SearchForm`' ,() => {
             component.find('.search-form').simulate('submit', {
                 preventDefault: () => {}
               })
+
         })
 
-        it('should call an action', () => {
+        it('should call fetchArticles actions', () => {         
             
-            sinon.assert.calledOnce(action)
-        })
+            sinon.assert.calledOnce(fetchAction)
+        })    
     })
 })

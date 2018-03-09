@@ -7,9 +7,8 @@ body {
     font-family: 'Roboto', sans-serif;
   }
 
-  h3 {
+  h1 {
       text-align: center;
-      padding-top: 1.5em;
   }
 
 #main-container {
@@ -23,30 +22,45 @@ body {
     border-left: 1px solid rgba(0,0,0,0.15);
 }
 
+#form-container {
+    /* padding: 1em; */
+    /* display:block;
+    margin:0em; */
+    /* display: flex;
+    align-items: center;
+    width: 20%; */
+    margin-left: 2.5em;
+}
+
 #search-form {
     display: flex;
     align-items: center;
-    padding-top: 1em;
-    width: 80%; 
+    padding-top: .1em;
+    width: 20%; 
     
 }
 
 #datepicker-container {
     display: flex;
-    align-items: center;
+    align-items: space-around;
 }
 
-#datepicker-startDate-label, #datepicker-endDate-label {
+#datepicker-startDate-label, #datepicker-endDate-label, #search-text-label {
     font-size: .8em;
     color: black;
-    padding-left: .5em;
-    padding-right: .5em;
 }
   
-#search-text-input-container, #submit-form-button-container  {
+#search-text-input-container, #submit-form-button-container {
     display: flex;
     align-items: center;
-    padding-top: .95em;
+    padding-left: .3em;
+    padding-right: .1em;
+} 
+
+#submit-form-button-container  {
+    display: flex;
+    align-items: center;
+    padding-top: 1em;
     padding-left: .5em;
     padding-right: .5em;
 } 
@@ -66,18 +80,61 @@ ul {
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
-    padding: 2em 0;
+    padding-top: 1em;
     margin: 1em 0.5em;
     width: 80%;
     border: 1px solid rgba(0,0,0,0.15);
 }
 
-p { 
+#article-author {
+    margin-bottom: 1em;
+    text-align: center;
     white-space: normal;
-    width: 60%;
+    width: 80%;
+}
+
+#article-snippet {
+    margin-bottom: 1em;
+    padding-left: 3.2em;
+    white-space: normal;
+    width: 80%;
 }
 
 #article-image {
-    height: 276px;
-    width: 427px;
+    width: 80%;
+    margin: 4em;
+    display:block;
+    margin:auto;
+}
+
+#sort-articles-select {
+    display:block;
+}
+
+#sort-articles-select-label {
+    margin-top: 2em;
+    margin-left: 40em;
+    font-size: .8em;
+    color: black;
+    display:block;
+}
+
+#no-article-image {
+    padding-top: 1em;
+    width: 40%;
+    display:block;
+    margin:auto;
+}
+
+#header-text {
+    text-align: center;
+    font-size: .7em;
+}
+
+.react-datepicker-wrapper {
+    padding: .3em;
+}
+
+#no-results-image {
+    padding: 2em;
 }
