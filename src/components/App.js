@@ -10,14 +10,14 @@ export class App extends Component {
     render() {
 
         const articlesShown = this.props.articles.length > 0
-        const showImage = this.props.articles !== null && this.props.articles.length > 0
+        const hasResults = this.props.articles !== null && this.props.articles.length > 0 
 
         return (
             <main id='main-container' className='main-container'>
                 <h1>New York Times Article Search</h1>
                 <p id='header-text'>A place where you can search for historical and current news articles from the New York Times based on your search criteria below.</p>
                 <SearchForm/>
-                {showImage && <img src={image} alt='no-results' id='no-results-image' className='no-results-image' />}
+                {!hasResults && <img src={image} alt='no-results' id='no-results-image' className='no-results-image' />}
                 {articlesShown && <SortArticles/>}
                 <ArticleList/>
             </main>
