@@ -57,9 +57,11 @@ export class SearchForm extends Component {
                             <DatePicker  
                                 className='start-date-datepicker'
                                 placeholderText="Select a start date"
+                                selectsStart
                                 selected={this.state.startDate}
                                 startDate={this.state.startDate}
                                 endDate={this.state.endDate}
+                                maxDate={this.state.endDate}
                                 onChange={handleChangeStart.bind(this)} 
                             />
                         </label> 
@@ -69,9 +71,11 @@ export class SearchForm extends Component {
                             <DatePicker
                                 className='end-date-datepicker'
                                 placeholderText="Select a end date"
+                                selectsEnd
                                 selected={this.state.endDate}
                                 startDate={this.state.startDate}
                                 endDate={this.state.endDate}
+                                minDate={this.state.startDate}
                                 onChange={handleChangeEnd.bind(this)}
                             />
                         </label> 
