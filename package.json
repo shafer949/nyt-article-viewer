@@ -2,6 +2,7 @@
   "name": "article-viewer",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://shafer949.github.io/article-viewer",
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.21.0",
@@ -17,6 +18,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
@@ -24,6 +27,7 @@
     "code": "^5.2.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "gh-pages": "^1.1.0",
     "redux-mock-store": "^1.5.1",
     "sinon": "^4.4.2"
   },
