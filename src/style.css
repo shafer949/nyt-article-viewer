@@ -95,8 +95,10 @@ ul {
 #article-snippet {
     margin-bottom: 1em;
     padding-left: 3.2em;
+    padding-right: 3.2em;
     white-space: normal;
-    width: 80%;
+    text-align: center;
+    width: 100%;
 }
 
 #article-image {
