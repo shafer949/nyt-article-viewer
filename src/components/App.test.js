@@ -87,11 +87,21 @@ describe('Given `App`' ,() => {
         expect(component.find('Connect(SearchForm)').exists()).to.be.true()
     })
 
-    it('should contain a `img` tag with text', () => {
+    it('should contain a `img` tag when no articles are shown', () => {
+
+        const newProps = { 
+            articles: [] 
+        }
+        const component = renderComponent({...newProps})
+
+       expect(component.find('.no-results-image').length).to.equal(1);
+    })
+
+    it('should not contain a `img` tag when articles are shown', () => {
 
         const component = renderComponent()
 
-       expect(component.find('.no-results-image').length).to.equal(1);
+       expect(component.find('.no-results-image').length).to.equal(0);
     })
 
     it('should contain a connected `SortArticles` component', () => {
