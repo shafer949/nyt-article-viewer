@@ -1,7 +1,6 @@
 body {
     display: flex;
     justify-content: center;
-    background: rgb(241, 237, 237);
     margin: 0;
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
@@ -23,13 +22,8 @@ body {
 }
 
 #form-container {
-    /* padding: 1em; */
-    /* display:block;
-    margin:0em; */
-    /* display: flex;
-    align-items: center;
-    width: 20%; */
-    margin-left: 2.5em;
+    margin-right: 10em;
+    margin-left: 10em;
 }
 
 #search-form {
@@ -42,20 +36,23 @@ body {
 
 #datepicker-container {
     display: flex;
-    align-items: space-around;
+    align-items: center;
 }
 
 #datepicker-startDate-label, #datepicker-endDate-label, #search-text-label {
     font-size: .8em;
     color: black;
+    margin-left: 1em;
 }
   
 #search-text-input-container, #submit-form-button-container {
     display: flex;
     align-items: center;
-    padding-left: .3em;
-    padding-right: .1em;
 } 
+
+#submit-form-button-container {
+    margin-left: .3em;
+}
 
 #submit-form-button-container  {
     display: flex;
@@ -69,6 +66,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0em; 
+    margin: 0em;   
 }
 
 ul {
@@ -101,7 +100,7 @@ ul {
 }
 
 #article-image {
-    width: 80%;
+    width: 50%;
     margin: 4em;
     display:block;
     margin:auto;
@@ -121,7 +120,7 @@ ul {
 
 #no-article-image {
     padding-top: 1em;
-    width: 40%;
+    width: 20%;
     display:block;
     margin:auto;
 }
@@ -131,10 +130,7 @@ ul {
     font-size: .7em;
 }
 
-.react-datepicker-wrapper {
-    padding: .3em;
-}
-
 #no-results-image {
     padding: 2em;
+    width: 65%;
 }

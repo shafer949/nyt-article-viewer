@@ -26,8 +26,8 @@ export class SortArticles extends Component {
             <label id='sort-articles-select-label' className='sort-articles-select-label'>
                 Sort Articles By               
             <select id='sort-articles-select' className='sort-articles-select' onChange={handleSelectChange.bind(this)}>
-                <option value='pub_date'>Publication Date</option>
-                <option value='word_count'>Article Length</option>                
+                <option value='pub_date'>Publication Date - Ascending </option>
+                <option value='word_count'>Article Length - Ascending</option>                
             </select>
             </label>
           )

@@ -70,16 +70,6 @@ describe('Given `App`' ,() => {
 
     })
 
-    it('should contain a `p` tag with text', () => {
-
-        const component = renderComponent()
-
-        const elementText = component.find('p').first().text()
-
-        expect(elementText.length).to.be.greaterThan(0)
-
-    })
-
     it('should contain a connected `SearchForm` component', () => {
 
         const component = renderComponent()

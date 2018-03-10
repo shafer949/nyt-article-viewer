@@ -15,7 +15,6 @@ export class App extends Component {
         return (
             <main id='main-container' className='main-container'>
                 <h1>New York Times Article Search</h1>
-                <p id='header-text'>A place where you can search for historical and current news articles from the New York Times based on your search criteria below.</p>
                 <SearchForm/>
                 {!hasResults && <img src={image} alt='no-results' id='no-results-image' className='no-results-image' />}
                 {articlesShown && <SortArticles/>}
