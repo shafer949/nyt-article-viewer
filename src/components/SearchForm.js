@@ -53,7 +53,7 @@ export class SearchForm extends Component {
                   <div id='datepicker-container' className='datepicker-container'>
                  
                         <label id='datepicker-startDate-label' className='datepicker-startDate-label'>
-                            Start Date 
+                              Start Date 
                             <DatePicker  
                                 className='start-date-datepicker'
                                 placeholderText="Select a start date"
