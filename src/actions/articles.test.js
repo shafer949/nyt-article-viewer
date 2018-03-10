@@ -3,8 +3,8 @@ import thunk from 'redux-thunk'
 import sinon from 'sinon'
 import {expect} from 'code'
 import 'isomorphic-fetch'
-import {fetchArticles} from './articles'
-import {FETCH_ARTICLES} from './actionTypes'
+import {fetchArticles, sortArticles} from './articles'
+import {FETCH_ARTICLES, SORT_ARTICLES} from './actionTypes'
 import moment from 'moment';
 
 const createMockStore = configureMockStore([thunk])
@@ -20,7 +20,17 @@ beforeEach(() => {
     sandbox = sinon.createSandbox()
 
     mockResponse = { 
-        docs: [ { _id: '1', snippet: "Test Article 1" } ] 
+        docs: [ 
+            {
+                _id: '1', 
+                web_url: 'https://www.nytimes.com/2018/03/05/opinion/mom-gun-safety-intruder.html',
+                multimedia: [ { url: 'https://www.nytimes.com/images/2018/03/05/opinion/05Chatterji/05Chatterji-articleLarge.jpg' } ],
+                snippet: "Test Snippet 1", 
+                byline: { original: 'Test Person 1'},
+                word_Count: 123,
+                pub_date: moment().day(-17)
+            }
+        ] 
     }
 
     mockError = {
@@ -42,9 +52,9 @@ afterEach(() => {
     store.clearActions();
 })
 
-it('should create an async action to fetch the articles with default parameters supplied', () => {
+it('creates an async action to fetch the articles with default parameters', () => {
     
-    const expectedActions = [{ type: FETCH_ARTICLES, articles: mockResponse.docs }]
+    const expectedActions = [{ type: SORT_ARTICLES, articles: mockResponse.docs }]
 
     return store.dispatch(fetchArticles())
         .then(()=> {
@@ -61,7 +71,7 @@ it('should fetch the articles based on valid parameters supplied', () => {
 
     const mockSearchText = 'dog'
 
-    const expectedActions = [{ type: FETCH_ARTICLES, articles: mockResponse.docs }]
+    const expectedActions = [{ type: SORT_ARTICLES, articles: mockResponse.docs }]
 
     return store.dispatch(fetchArticles(mockStartDate, mockEndDate, mockSearchText))
         .then(()=> {
@@ -69,3 +79,35 @@ it('should fetch the articles based on valid parameters supplied', () => {
             expect(store.getActions()).to.equal(expectedActions)
         })
 })
+
+it('creates an action to sort the articles based on the default parameters', () => {
+    
+    const expectedAction = { type: SORT_ARTICLES, articles: [] }
+
+    expect(sortArticles()).to.equal(expectedAction)
+})
+
+it('should sort the articles based on articles being supplied and default selected sort option', () => {
+    
+    const expectedAction = { type: SORT_ARTICLES, articles: mockResponse.docs }
+
+    expect(sortArticles(mockResponse.docs)).to.equal(expectedAction)
+}) 
+
+it('should sort the articles based on default articles being supplied and the selected sort option', () => {
+    
+    const expectedAction = { type: SORT_ARTICLES, articles: [] }
+
+    const mockSelectedSortOption = 'word_count'
+
+    expect(sortArticles([], mockSelectedSortOption)).to.equal(expectedAction)
+})   
+
+it('should sort the articles based on articles being supplied and the selected sort option', () => {
+    
+    const expectedAction = { type: SORT_ARTICLES, articles: mockResponse.docs }
+
+    const mockSelectedSortOption = 'word_count'
+
+    expect(sortArticles(mockResponse.docs, mockSelectedSortOption)).to.equal(expectedAction)
+})   
