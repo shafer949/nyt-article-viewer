@@ -46,11 +46,32 @@ describe('Given ArticleListItem', () => {
 
     describe('Given `a` tag', () => {
 
-        it('should contain an `img` tag for the article', () => {
+        it('should contain an `img` tag for the article if image is returned', () => {
 
             const component = renderComponent();
     
-            expect(component.find('.article-image').type()).to.equal('img');
+            expect(component.find('.article-image').length).to.equal(1);
+            
+            expect(component.find('.no-article-image').length).to.equal(0);
+        })
+
+        it('should contain an `img` tag for the article if image is not returned', () => {
+
+            const newProps = {
+                article: { 
+                    _id: '1', 
+                     web_url: 'https://www.nytimes.com/2018/03/05/opinion/mom-gun-safety-intruder.html',
+                     multimedia: [],
+                     snippet: "Test Snippet 1", 
+                     byline: { original: 'Test Person 1'} 
+                }
+            }
+
+            const component = renderComponent({...newProps});
+
+            expect(component.find('.article-image').length).to.equal(0);
+
+            expect(component.find('.no-article-image').length).to.equal(1);
         })
     })
 
