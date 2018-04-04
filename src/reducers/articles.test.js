@@ -5,6 +5,14 @@ import moment from 'moment';
 
 describe('articlesReducer', () => {
 
+    it('should return the initial state when none is given', () => {
+
+        const expectedState = [];
+
+        expect(articlesReducer(undefined, { type: 'NO_MATCH'})).to.equal(expectedState);
+
+    })
+
     it('should fetch the articles data', () => {
 
         const initialState = []

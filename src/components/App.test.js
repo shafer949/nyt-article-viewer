@@ -52,11 +52,19 @@ describe('Given `App`' ,() => {
         
     }
     
-    it('it should exist as a `main` tag', () => {
+    it('it should exist as a `MuiThemeProvider`', () => {
 
         const component = renderComponent()
         
-        expect(component.type()).to.equal('main')
+        expect(component.find('MuiThemeProvider').exists()).to.be.true()
+
+    })
+
+    it('it should contain a `Paper`', () => {
+
+        const component = renderComponent()
+        
+        expect(component.find('Paper').exists()).to.be.true()
 
     })
 
@@ -67,6 +75,14 @@ describe('Given `App`' ,() => {
         const elementText = component.find('h1').first().text()
 
         expect(elementText.length).to.be.greaterThan(0)
+
+    })
+
+    it('it should contain two `Divider` tags', () => {
+
+        const component = renderComponent()
+        
+        expect(component.find('Divider').length).to.equal(2)
 
     })
 

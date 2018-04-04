@@ -9,6 +9,7 @@ export class ArticleList extends Component {
         return (
                 <ul className='article-list' id='article-list'>
                 {
+                    
                     this.props.articles.map((article) => {
                         return <ArticleListItem key={article._id} article={article} />
                     })

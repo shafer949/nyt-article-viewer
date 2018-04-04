@@ -1,10 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import "react-datepicker/dist/react-datepicker.css";
-import { connect } from 'react-redux'
-import { fetchArticles } from '../actions/articles'
-import PropTypes from 'prop-types'
+import { connect } from 'react-redux';
+import { fetchArticles } from '../actions/articles';
+import PropTypes from 'prop-types';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+import {orange500, blue500, grey300} from 'material-ui/styles/colors';
 
 function handleFormSubmit(event) {
 
@@ -30,11 +33,23 @@ function handleChangeEnd(date) {
       });
 }
 
-function handleInputChange(event) {
+function handleInputChange(event, index, value) {
     this.setState({
         searchText: event.target.value
     })
 }
+
+const styles = {
+    errorStyle: {
+      color: orange500
+    },
+    underlineStyle: {
+      borderColor: blue500
+    },
+    floatingLabelFocusStyle: {
+      color:grey300
+    }
+  };
 
 export class SearchForm extends Component {
 
@@ -46,16 +61,14 @@ export class SearchForm extends Component {
 
     render() {
         return (
-            <section id='form-container' className='form-container'>
-
                 <form id='search-form' className='search-form' onSubmit={handleFormSubmit.bind(this)}>
-                  
-                  <div id='datepicker-container' className='datepicker-container'>
                  
                         <label id='datepicker-startDate-label' className='datepicker-startDate-label'>
-                              Start Date 
+                           Start Date 
+                        </label>
+                        <div id='datePicker-start' className='datePicker-start'>
                             <DatePicker  
-                                className='start-date-datepicker'
+                                className='start-date'
                                 placeholderText="Select a start date"
                                 selectsStart
                                 selected={this.state.startDate}
@@ -64,12 +77,13 @@ export class SearchForm extends Component {
                                 maxDate={this.state.endDate}
                                 onChange={handleChangeStart.bind(this)} 
                             />
-                        </label> 
-                      
+                        </div>                      
                         <label id='datepicker-endDate-label' className='datepicker-endDate-label'>
-                            End Date                             
+                            End Date  
+                        </label>  
+                        <div id='datePicker-end' className='datePicker-end'>
                             <DatePicker
-                                className='end-date-datepicker'
+                                className='end-date'
                                 placeholderText="Select a end date"
                                 selectsEnd
                                 selected={this.state.endDate}
@@ -78,23 +92,10 @@ export class SearchForm extends Component {
                                 minDate={this.state.startDate}
                                 onChange={handleChangeEnd.bind(this)}
                             />
-                        </label> 
-                 </div>
-
-                <div id='search-text-input-container' className='search-text-input-container'>
-                        <label id='search-text-label'>
-                            Search Text 
-                           <input className='search-text-input' placeholder='Enter search text' onChange={handleInputChange.bind(this)}/>
-                        </label>
-                </div>
-
-                <div id='submit-form-button-container' className='submit-form-button-container'>
-                        <button className='submit-form-button' type='submit'>Submit</button>
-                </div>
-
+                        </div>                
+                        <TextField underlineFocusStyle={styles.underlineStyle} floatingLabelText="Search Text" floatingLabelFixed={true} id='search-text-input' className='search-text-input' hintText="Enter your search text" onChange={handleInputChange.bind(this)}/>
+                        <RaisedButton label='Submit' className='submit-form-button' id='submit-form-button' type='submit'/>              
                 </form>    
-
-            </section>
         )
     }
 }

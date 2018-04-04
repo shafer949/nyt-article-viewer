@@ -30,6 +30,14 @@ describe('Given ArticleListItem', () => {
         
     }
 
+    it('it should contain a `Paper`', () => {
+
+        const component = renderComponent()
+        
+        expect(component.find('Paper').exists()).to.be.true()
+
+    })
+
     it('should contain an `li` tag for the article', () => {
 
         const component = renderComponent();

@@ -33,10 +33,6 @@ beforeEach(() => {
         ] 
     }
 
-    mockError = {
-        errors: ['Invalid parameters supplied.'] 
-    }
-
     fetchStub = sandbox.stub(global,'fetch')
     .resolves({
         json: sandbox.stub().resolves({

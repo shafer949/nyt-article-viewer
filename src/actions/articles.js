@@ -10,7 +10,7 @@ export const sortArticles = (articles=[], sortArticlesBy='pub_date') => {
     return {
         type: SORT_ARTICLES, 
         articles: [...articles].sort((a,b) => {
-          
+          console.log('sort articles')
             if(sortArticlesBy === 'word_count') {
               return  a.word_count < b.word_count
             } 

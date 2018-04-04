@@ -68,29 +68,39 @@ describe('Given `SortArticles`', () => {
     })
 
 
-    it('should exist as a `select` tag', () => {
+    it('should exist as a `SelectField` tag', () => {
 
         const component = renderComponent();
 
-        expect(component.find('.sort-articles-select').length).to.equal(1);
+        expect(component.find('SelectField').length).to.equal(1);
     })
 
-    describe('Given the `select`', () => {
+    it('should have default state for sortArticlesBy', () => {
 
-        const options = [
-            { value: 'word_count', label: 'Article Length' },
-            { value: 'pub_date', label: 'Publication Date' },
-        ]
+        const component = renderComponent();
+
+        expect(component.state().sortArticlesBy).to.equal('pub_date');
+    })
+
+    describe('Given the `SelectField`', () => {
 
         it('should have two options', () => {
 
             const component = renderComponent();
 
-            expect(component.find('option').length).to.equal(options.length);
+            expect(component.find('MenuItem').length).to.equal(2);
+        })
+
+        it('should have a default value of pub_date', () => {
+
+            const component = renderComponent();
+            
+            expect(component.find('SelectField').props().value).to.equal('pub_date');
+        
         })
     })
 
-    describe('When the `select` has a value', () => {
+    describe('When the `SelectField` has a value', () => {
 
         let component, action
 
@@ -103,8 +113,9 @@ describe('Given `SortArticles`', () => {
             component.setState({ 
                 sortArticlesBy: 'word_count'
             });
-
-            component.find('.sort-articles-select').simulate('change', { target: { value: 'word_count' } })
+            
+            component.find('SelectField').simulate('change', { target: { value: 'word_count' } })
+           
         })
         
         it('should call an action', () => {
@@ -112,7 +123,7 @@ describe('Given `SortArticles`', () => {
             sinon.assert.calledOnce(action)
         })
 
-        it('should have a local sortArticlesBy that is not an empty string', () => {
+        it('should have a local state that is word_count', () => {
 
             expect(component.state().sortArticlesBy).to.equal('word_count')
         })
