@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import image from '../images/no-image.png'
 import Paper from 'material-ui/Paper';
 
-const ArticleListItem = ({ article = {} }) => {
+const ArticleListItem = ({ article }) => {
 
     const { web_url, multimedia, snippet, byline } = article
    
@@ -29,6 +29,10 @@ const ArticleListItem = ({ article = {} }) => {
 
 ArticleListItem.propTypes = {
     article: PropTypes.object.isRequired
+}
+
+ArticleListItem.defaultProps = {
+    article: {}
 }
 
 export default ArticleListItem

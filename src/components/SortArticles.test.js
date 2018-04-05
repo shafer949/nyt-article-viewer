@@ -17,7 +17,7 @@ describe('Given `SortArticles`', () => {
                     multimedia: [ { url: 'https://www.nytimes.com/images/2018/03/05/opinion/05Chatterji/05Chatterji-articleLarge.jpg' } ],
                     snippet: "Test Snippet 1", 
                     byline: { original: 'Test Person 1'},
-                    word_Count: 123,
+                    word_count: 123,
                     pub_date: moment().day(-17)
                 },
                 {
@@ -26,7 +26,7 @@ describe('Given `SortArticles`', () => {
                     multimedia: [ { url: 'https://www.nytimes.com/images/2018/03/05/opinion/05Chatterji/05Chatterji-articleLarge.jpg' } ],
                     snippet: "Test Snippet 1", 
                     byline: { original: 'Test Person 1'},
-                    word_Count: 800,
+                    word_count: 800,
                     pub_date: moment()
                 },
                 {
@@ -35,7 +35,7 @@ describe('Given `SortArticles`', () => {
                     multimedia: [ { url: 'https://www.nytimes.com/images/2018/03/05/opinion/05Chatterji/05Chatterji-articleLarge.jpg' } ],
                     snippet: "Test Snippet 1", 
                     byline: { original: 'Test Person 1'},
-                    word_Count: 50,
+                    word_count: 50,
                     pub_date: moment().month(-5)
                 }
             ] 
