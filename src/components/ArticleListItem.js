@@ -1,12 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import image from '../images/no-image.png'
+import Paper from 'material-ui/Paper';
 
-const ArticleListItem = ({ article = {} }) => {
+const ArticleListItem = ({ article }) => {
 
     const { web_url, multimedia, snippet, byline } = article
    
     return (
+        <Paper id='paper-style-list-item' zDepth={3}>
         <li id='article-list-item' className='article-list-item' >
 
             <a className='article-link' href={web_url} target='blank'>
@@ -21,11 +23,16 @@ const ArticleListItem = ({ article = {} }) => {
             <p id='article-snippet' className='article-snippet'>{snippet}</p>
             <p id='article-author' className='article-author'>{byline.original}</p>
         </li>
+        </Paper>
     )
 }
 
 ArticleListItem.propTypes = {
     article: PropTypes.object.isRequired
+}
+
+ArticleListItem.defaultProps = {
+    article: {}
 }
 
 export default ArticleListItem

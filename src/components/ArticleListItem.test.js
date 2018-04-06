@@ -6,29 +6,33 @@ import ArticleListItem from './ArticleListItem'
 
 describe('Given ArticleListItem', () => {
 
-    const requiredProps = (overrideProps  = {}) => {
+    const requiredProps = (overrideProps = {}) => {
     
-        const testProps = {
+        return {
             article: { 
                 _id: '1', 
                  web_url: 'https://www.nytimes.com/2018/03/05/opinion/mom-gun-safety-intruder.html',
                  multimedia: [ { url: 'https://www.nytimes.com/images/2018/03/05/opinion/05Chatterji/05Chatterji-articleLarge.jpg' } ],
                  snippet: "Test Snippet 1", 
                  byline: { original: 'Test Person 1'} 
-            }
-        }
-
-        return {
-            ...testProps,
+            },
             ...overrideProps
         }
     }
     
     const renderComponent = (props = requiredProps()) => {
-    
+      
         return shallow(<ArticleListItem {...props} />)
         
     }
+
+    it('it should contain a `Paper`', () => {
+
+        const component = renderComponent()
+        
+        expect(component.find('Paper').exists()).to.be.true()
+
+    })
 
     it('should contain an `li` tag for the article', () => {
 

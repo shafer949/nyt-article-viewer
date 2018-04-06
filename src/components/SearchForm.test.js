@@ -33,14 +33,6 @@ describe('Given `SearchForm`' ,() => {
 
     })
 
-    it('should exist as a `section` tag', () => {
-
-        const component = renderComponent()
-        
-        expect(component.type()).to.equal('section')
-
-    })
-
     it('should contain a `form`', () => {
 
         const component = renderComponent()
@@ -50,12 +42,19 @@ describe('Given `SearchForm`' ,() => {
     })
 
     describe('Given the form', () => {
-
-        it('should contain an `div` tag', () => {
+        
+        it('should contain an `label` tag for the start date DatePicker', () => {
 
             const component = renderComponent()
 
-            expect(component.find('.datepicker-container').type()).to.equal('div')
+            expect(component.find('.datepicker-startDate-label').type()).to.equal('label')
+        })
+
+        it('should contain an `div` tag for the start date DatePicker', () => {
+
+            const component = renderComponent()
+
+            expect(component.find('.datePicker-start').type()).to.equal('div')
         })
 
         it('should contain a start date and end date `DatePicker`', () => {
@@ -65,26 +64,36 @@ describe('Given `SearchForm`' ,() => {
             expect(component.find('DatePicker').length).to.equal(2)
         })
 
-        it('should contain an `div` tag with an `input`', () => {
+        it('should contain an `label` tag for the end date DatePicker', () => {
 
             const component = renderComponent()
 
-            expect(component.find('.search-text-input-container').type()).to.equal('div')
-            
-            expect(component.find('.search-text-input').type()).to.equal('input')        
+            expect(component.find('.datepicker-endDate-label').type()).to.equal('label')
         })
 
-        it('should contain an `div` tag with a `button`', () => {
+        it('should contain an `div` tag for the end date DatePicker', () => {
 
             const component = renderComponent()
 
-            expect(component.find('.submit-form-button-container').type()).to.equal('div')
-            
-            expect(component.find('.submit-form-button').type()).to.equal('button')
+            expect(component.find('.datePicker-end').type()).to.equal('div')
+        })
+
+        it('should contain an `TextField`', () => {
+
+            const component = renderComponent()
+
+            expect(component.find('TextField').length).to.equal(1)        
+        })
+
+        it('should contain a submit `RaisedButton`', () => {
+
+            const component = renderComponent()
+
+            expect(component.find('RaisedButton').length).to.equal(1) 
         })
     })    
 
-    describe('When the startDate and endDate `datepicker` each have a value other than null', () => {
+    describe('When the startDate and endDate `Datepicker` each have a value other than null', () => {
 
         let component
 
@@ -96,10 +105,9 @@ describe('Given `SearchForm`' ,() => {
                 startDate: moment(),
                 endDate: moment()
             });
-
-            component.find('.start-date-datepicker').simulate('change', { target: { value: component.state().startDate } })
-
-            component.find('.end-date-datepicker').simulate('change', { target: { value: component.state().endDate } })
+            component.find('DatePicker').at(0).simulate('change', { target: { value: component.state().startDate } })
+            
+            component.find('DatePicker').at(1).simulate('change', { target: { value: component.state().endDate } })
         })
 
         afterEach(() => {
@@ -120,7 +128,7 @@ describe('Given `SearchForm`' ,() => {
         })
     })
 
-    describe('When the `input` has a value', () => {
+    describe('When the `TextField` has a value', () => {
 
         let component, mockSearchText
 
@@ -130,7 +138,7 @@ describe('Given `SearchForm`' ,() => {
 
             component = renderComponent()
                 
-            component.find('.search-text-input').simulate('change', { target: { value: mockSearchText } })
+            component.find('TextField').simulate('change', { target: { value: mockSearchText } })
         })
 
         it('should have a local searchText', () => {
@@ -139,7 +147,7 @@ describe('Given `SearchForm`' ,() => {
         })
     })
 
-    describe('When submit `button` is clicked', () => {
+    describe('When submit `RaisedButton` is clicked', () => {
         let fetchAction, component
 
         beforeEach(() => {

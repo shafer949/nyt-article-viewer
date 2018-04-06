@@ -1,138 +1,119 @@
 body {
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
-  }
-
-  h1 {
-      text-align: center;
-  }
-
-#main-container {
-    background: rgb(192, 192, 197);
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    width: 66.666vw;
-    align-items: center;
-    border-right: 1px solid rgba(0,0,0,0.15);
-    border-left: 1px solid rgba(0,0,0,0.15);
+    background-color: #9E9E9E !important;
 }
 
-#form-container {
-    margin-right: 10em;
-    margin-left: 10em;
+h1 {
+    padding-top: 5vh;
+}
+
+#paper-style {
+    min-height: 100vh !important;
+    width: 60vw !important;
+    margin: auto !important;
+    text-align: center !important;
+}
+
+#paper-style-list-item {
+    margin: auto !important;
+    width: 40vw !important;
+    margin-top: 2vh !important;
+}
+
+#no-results-image {
+    padding: 5em;
+    width: 65%;
+} 
+
+#article-image {
+    padding: 1em;
+    width: 65%;
+}
+
+#no-article-image {
+    padding: 1em;
+    width: 20%;
 }
 
 #search-form {
-    display: flex;
-    align-items: center;
-    padding-top: .1em;
-    width: 20%; 
-    
+    margin: auto;
+    margin-right: 5vw; 
+    margin-bottom: 2vh;  
 }
 
-#datepicker-container {
-    display: flex;
-    align-items: center;
+#datepicker-startDate-label, #datepicker-endDate-label {
+    display: inline-block;
+    font-size: 15px;
+    line-height: 40px; 
+    transform: scale(0.75) translate(88px, -28px); 
+    transform-origin: left top 0px; 
+    color: rgba(0, 0, 0, 0.3); 
 }
 
-#datepicker-startDate-label, #datepicker-endDate-label, #search-text-label {
-    font-size: .8em;
-    color: black;
-    margin-left: 1em;
-}
-  
-#search-text-input-container, #submit-form-button-container {
-    display: flex;
-    align-items: center;
-} 
-
-#submit-form-button-container {
-    margin-left: .3em;
+#datepicker-endDate-label {
+    transform: scale(0.75) translate(82px, -28px); 
 }
 
-#submit-form-button-container  {
-    display: flex;
-    align-items: center;
-    padding-top: 1em;
-    padding-left: .5em;
-    padding-right: .5em;
-} 
+.search-text-input, #search-text-input {
+    margin: 1em 1em 1em .5em !important;
+    width: 10em !important;
+}
 
-#article-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0em; 
-    margin: 0em;   
+label {
+    text-align: left;
+}
+
+.sort-articles-select {
+    width: 10.8em !important;
+    text-align: left !important;
+    margin-left: -34vw !important;
+    display: inline-block !important;
 }
 
 ul {
     list-style: none
 }
 
-#article-list-item {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    padding-top: 1em;
-    margin: 1em 0.5em;
-    width: 80%;
-    border: 1px solid rgba(0,0,0,0.15);
+#article-list {
+    margin: auto;
+    padding: 0em;
+    padding-bottom: .8em;
 }
 
-#article-author {
-    margin-bottom: 1em;
-    text-align: center;
-    white-space: normal;
-    width: 80%;
+#article-list-item {
+    padding-bottom: .1em;
 }
 
 #article-snippet {
-    margin-bottom: 1em;
-    padding-left: 3.2em;
-    padding-right: 3.2em;
-    white-space: normal;
+    text-align: left;
+    width: 90%;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    padding: 0em;
+    margin-top: 0em;
+}
+
+#article-author {
     text-align: center;
-    width: 80%;
+    margin: 0em;
+    margin-bottom: .2em;
 }
 
-#article-image {
-    width: 50%;
-    margin: 4em;
-    display:block;
-    margin:auto;
+#datePicker-start {
+    display: inline-block;
+    margin-right: -3em;
+    padding-top: 2em;
 }
 
-#sort-articles-select {
-    display:block;
+#datePicker-end {
+    display: inline-block;
+    margin-right: .5em;
+    padding-top: 2em;
 }
 
-#sort-articles-select-label {
-    margin-top: 2em;
-    margin-left: 40em;
-    font-size: .8em;
-    color: black;
-    display:block;
+label[for=search-text-input] {
+    color: rgba(0, 0, 0, 0.3) !important;
 }
 
-#no-article-image {
-    padding-top: 1em;
-    width: 20%;
-    display:block;
-    margin:auto;
-}
-
-#header-text {
-    text-align: center;
-    font-size: .7em;
-}
-
-#no-results-image {
-    padding: 2em;
-    width: 65%;
+span[role=menuitem] {
+    color: #2196F3!important;
 }

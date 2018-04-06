@@ -16,7 +16,7 @@ describe('Given `App`' ,() => {
                 multimedia: [ { url: 'https://www.nytimes.com/images/2018/03/05/opinion/05Chatterji/05Chatterji-articleLarge.jpg' } ],
                 snippet: "Test Snippet 1", 
                 byline: { original: 'Test Person 1'},
-                word_Count: 123,
+                word_count: 123,
                 pub_date: moment().day(-17)
             },
             {
@@ -25,7 +25,7 @@ describe('Given `App`' ,() => {
                 multimedia: [ { url: 'https://www.nytimes.com/images/2018/03/05/opinion/05Chatterji/05Chatterji-articleLarge.jpg' } ],
                 snippet: "Test Snippet 1", 
                 byline: { original: 'Test Person 1'},
-                word_Count: 800,
+                word_count: 800,
                 pub_date: moment()
             },
             {
@@ -34,7 +34,7 @@ describe('Given `App`' ,() => {
                 multimedia: [ { url: 'https://www.nytimes.com/images/2018/03/05/opinion/05Chatterji/05Chatterji-articleLarge.jpg' } ],
                 snippet: "Test Snippet 1", 
                 byline: { original: 'Test Person 1'},
-                word_Count: 50,
+                word_count: 50,
                 pub_date: moment().month(-5)
             }
         ] 
@@ -52,11 +52,19 @@ describe('Given `App`' ,() => {
         
     }
     
-    it('it should exist as a `main` tag', () => {
+    it('it should exist as a `MuiThemeProvider`', () => {
 
         const component = renderComponent()
         
-        expect(component.type()).to.equal('main')
+        expect(component.find('MuiThemeProvider').exists()).to.be.true()
+
+    })
+
+    it('it should contain a `Paper`', () => {
+
+        const component = renderComponent()
+        
+        expect(component.find('Paper').exists()).to.be.true()
 
     })
 
@@ -67,6 +75,14 @@ describe('Given `App`' ,() => {
         const elementText = component.find('h1').first().text()
 
         expect(elementText.length).to.be.greaterThan(0)
+
+    })
+
+    it('it should contain two `Divider` tags', () => {
+
+        const component = renderComponent()
+        
+        expect(component.find('Divider').length).to.equal(2)
 
     })
 
