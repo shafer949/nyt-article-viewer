@@ -110,10 +110,6 @@ describe('Given `SortArticles`', () => {
 
             component = renderComponent({sortArticles:action})
             
-            component.setState({ 
-                sortArticlesBy: 'word_count'
-            });
-            
             component.find('SelectField').simulate('change', { target: { value: 'word_count' } })
            
         })
