@@ -7,7 +7,7 @@ import { fetchArticles } from '../actions/articles';
 import PropTypes from 'prop-types';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import {orange500, blue500, grey300} from 'material-ui/styles/colors';
+import {blue500, grey300} from 'material-ui/styles/colors';
 
 function handleFormSubmit(event) {
 
@@ -15,34 +15,38 @@ function handleFormSubmit(event) {
 
     const startDate = this.state.startDate && this.state.startDate.format('YYYYMMDD')
     const endDate = this.state.endDate && this.state.endDate.format('YYYYMMDD')
-    const searchText = this.state.searchText && this.state.searchText
+    const searchText = this.state.searchText
 
     startDate && endDate && searchText &&
     this.props.fetchArticles(startDate, endDate, searchText)
+
 }
 
 function handleChangeStart(date) {
+
     this.setState({
         startDate: date && moment(date) 
       });
+
 }
 
 function handleChangeEnd(date) {
+
     this.setState({
         endDate: date && moment(date)
       });
+
 }
 
 function handleInputChange(event, index, value) {
+
     this.setState({
         searchText: event.target.value
-    })
+    });
+
 }
 
 const styles = {
-    errorStyle: {
-      color: orange500
-    },
     underlineStyle: {
       borderColor: blue500
     },
@@ -60,6 +64,10 @@ export class SearchForm extends Component {
     }
 
     render() {
+
+        const { startDate, endDate, searchText } = this.state
+        const formIsValid = startDate !== null && endDate !== null && searchText !== ''
+
         return (
                 <form id='search-form' className='search-form' onSubmit={handleFormSubmit.bind(this)}>
                  
@@ -92,9 +100,25 @@ export class SearchForm extends Component {
                                 minDate={this.state.startDate}
                                 onChange={handleChangeEnd.bind(this)}
                             />
-                        </div>                
-                        <TextField underlineFocusStyle={styles.underlineStyle} floatingLabelText="Search Text" floatingLabelFixed={true} id='search-text-input' className='search-text-input' hintText="Enter your search text" onChange={handleInputChange.bind(this)}/>
-                        <RaisedButton label='Submit' className='submit-form-button' id='submit-form-button' type='submit'/>              
+                        </div> 
+
+                        <TextField
+                             underlineFocusStyle={styles.underlineStyle} 
+                             floatingLabelText="Search Text" 
+                             floatingLabelFixed={true} 
+                             id='search-text-input' 
+                             className='search-text-input' 
+                             hintText="Enter your search text" 
+                             onChange={handleInputChange.bind(this)}
+                        />
+
+                        <RaisedButton 
+                            label='Submit' 
+                            className='submit-form-button' 
+                            id='submit-form-button' 
+                            type='submit'
+                            disabled={!formIsValid}
+                        />              
                 </form>    
         )
     }
