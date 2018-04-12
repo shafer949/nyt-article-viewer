@@ -2,7 +2,7 @@
 
 This app allows a user to search for current and historical news articles from the New York Times API. 
 
-##Usage
+## Usage
 
 When the app loads, the user will see a form with a date picker for start date, date picker for end date, search text field and a disabled submit button. The user must enter a start date, end date, and search text in the form in order for the submit button to be enabled. 
 
@@ -14,7 +14,7 @@ After the news articles display, a drop down will display for sorting the articl
 
 If no articles are found, the image that is seen when the app loads will display.
 
-##Setup
+## Setup
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
