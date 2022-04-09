@@ -6,7 +6,7 @@
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
     "material-ui": "^0.20.0",
-    "moment": "^2.21.0",
+    "moment": "^2.29.2",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-datepicker": "^1.2.2",
